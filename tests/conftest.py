@@ -15,9 +15,9 @@ URL = "https://demo.nopcommerce.com"
 i definiuje jej zasięg class, co oznacza, że ta funkcja będzie wywoływana 
 tylko raz dla każdej klasy testowej."""
 
-@pytest.fixture(scope="class")
 
-def setup(request):
+@pytest.fixture(scope="class")
+def browser_setup(request):
     # Create a browser object
     driver = webdriver.Firefox()
     wait = WebDriverWait(driver, 15)
@@ -26,7 +26,7 @@ def setup(request):
     driver.maximize_window()
     request.cls.driver = driver
     request.cls.wait = wait
-    yield 
+    yield
     driver.delete_all_cookies()
+    driver.execute_script("window.localStorage.clear();")
     driver.quit()
-    
