@@ -1,8 +1,6 @@
-import time
-
 import pytest
+
 from pages.header_menu import HeaderMenu
-from utilities.utils import Utils
 
 
 # Use the "browser_setup" fixture from the conftest.py file
