@@ -1,9 +1,12 @@
 import random
+from pages.base_page import BasePage
+from pages.header_menu import HeaderMenu
+from pages.register_page import RegisterPage
 
+class Utils(BasePage):
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
-class Utils:
-
-    def __init__(self):
         self.imiona = [
             "Adam",
             "Barbara",
@@ -55,3 +58,16 @@ class Utils:
         lastname = self.generate_lastname()
         password = firstname + lastname.lower()
         return password
+
+    def create_new_user_on_database(self):
+        header_menu = HeaderMenu(self.driver, self.wait)
+        register_page = header_menu.open_register_page()
+        # Enter valid registration details
+        name = self.generate_name()
+        lastname = self.generate_lastname()
+        email = self.generate_email()
+        password = self.generate_password()
+        register_page.enter_register_details(name, lastname, email, password)
+        register_page.click_register_button()
+        return email, password
+

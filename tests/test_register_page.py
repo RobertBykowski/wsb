@@ -1,34 +1,27 @@
 import pytest
 from pages.header_menu import HeaderMenu
-# from utilities.utils import Utils
 
 
+# Use the "browser_setup" fixture from the conftest.py file
 @pytest.mark.usefixtures("browser_setup")
 class TestRegisterPage:
 
-    # def generate_personal_data(self):
-    #     ut = Utils()
-    #     firstname = ut.generate_name()
-    #     lastname = ut.generate_lastname()
-    #     email = ut.generate_email()
-    #     password = ut.generate_password()
-    #     return firstname, lastname, email, password
-
+    # Positive test for registering a new user
     def test_pos_register_new_user(self):
-        # firstname, lastname, email, password = self.generate_personal_data()
-
-        rp = HeaderMenu(self.driver, self.wait)
-        register_page = rp.open_register_page()
-        # register_page.enter_register_details(firstname, lastname, email, password)
+        header_menu = HeaderMenu(self.driver, self.wait)
+        register_page = header_menu.open_register_page()
+        # Enter valid registration details
         register_page.enter_register_details("Adam", "Nowak", "adamnowak@wp.pl", "tomasznowak")
         register_page.click_register_button()
+        # Check if success message is displayed
         assert register_page.get_success_message() == "Your registration completed"
 
+    # Negative test for registering a new user with already existing email
     def test_neg_register_new_user(self):
-        # firstname, lastname, email, password = self.generate_personal_data()
-        rp = HeaderMenu(self.driver, self.wait)
-        register_page = rp.open_register_page()
-        # register_page.enter_register_details(firstname, lastname, email, password)
+        header_menu = HeaderMenu(self.driver, self.wait)
+        register_page = header_menu.open_register_page()
+        # Enter registration details with already existing email
         register_page.enter_register_details("Tomasz", "Nowak", "tomasznowak@wp.pl", "tomasznowak")
         register_page.click_register_button()
-        assert register_page.get_waring_message() == "The specified email already exists"
+        # Check if warning message is displayed
+        assert register_page.get_warning_message() == "The specified email already exists"
