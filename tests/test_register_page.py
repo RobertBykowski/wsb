@@ -22,7 +22,7 @@ class TestRegisterPage:
         header_menu = HeaderMenu(self.driver, self.wait)
         register_page = header_menu.open_register_page()
         # Enter registration details with already existing email
-        register_page.enter_register_details("Tomasz", "Nowak", "tomasznowak@wp.pl", "tomasznowak")
+        register_page.enter_register_details("Tomasz", "Nowak", "adamnowak@wp.pl", "adamnowak")
         register_page.click_register_button()
         # Check if warning message is displayed
         assert register_page.get_warning_message() == "The specified email already exists"
