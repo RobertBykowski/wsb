@@ -20,7 +20,7 @@ class TestProductFinder:
         search_results = search_result_page.get_search_result()
         # asserting that at least one result contains the given keyword
         assert any(keyword.lower() in result.lower() for result in
-                   search_results), f"No products were found that matched your criteria. '{keyword}'"
+                   search_results)
 
     # loading test data from the test_data.json file
     with open(os.path.join('data_test', 'test_data.json')) as f:

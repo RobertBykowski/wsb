@@ -11,7 +11,7 @@ class TestRegisterPage:
         header_menu = HeaderMenu(self.driver, self.wait)
         register_page = header_menu.open_register_page()
         # Enter valid registration details
-        register_page.enter_register_details("Adam", "Nowak", "adamnowak@wp.pl", "tomasznowak")
+        register_page.enter_register_details("Adam", "Nowak", "adamnowak@wp.pl", "adamnowak")
         register_page.click_register_button()
         # Check if success message is displayed
         assert register_page.get_success_message() == "Your registration completed"

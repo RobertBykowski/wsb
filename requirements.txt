@@ -1,0 +1,4 @@
+selenium==4.8.3
+pytest==7.2.1
+pytest-html==3.2.0
+python_version>=3.11.2
