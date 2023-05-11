@@ -1,13 +1,13 @@
-import json
-import os
-
 import pytest
 
 # importing the HeaderMenu class from the pages.header_menu module
 from pages.header_menu import HeaderMenu
+from utilities.utils import Utils
 
 
 # Use the "browser_setup" fixture from the conftest.py file
+
+
 @pytest.mark.usefixtures("browser_setup")
 class TestProductFinder:
 
@@ -23,11 +23,12 @@ class TestProductFinder:
                    search_results)
 
     # loading test data from the test_data.json file
-    with open(os.path.join('data_test', 'test_data.json')) as f:
-        test_data = json.load(f)
+    ul = Utils()
 
     # testing the search for a nonexistent product with the keywords from the test_data.json file
-    @pytest.mark.parametrize("keyword", [data["keyword"] for data in test_data])
+
+    @pytest.mark.parametrize("keyword", [data["keyword"] for data in ul.get_test_data()])
+    # @pytest.mark.parametrize("keyword", [data["keyword"] for data in test_data])
     def test_search_for_nonexistent_product(self, keyword):
         # searching for the product using the keyword in the search bar
         search_result_page = HeaderMenu(self.driver, self.wait).search_bar(keyword)

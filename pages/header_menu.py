@@ -18,42 +18,50 @@ class HeaderMenu(BasePage):
         self.wait = wait
 
     # Locators
-    REGISTER_LINK = (By.XPATH, "//a[contains(text(),'Register')]")
-    SHOPPING_CART_LINK = (By.XPATH, "//span[contains(text(),'Shopping cart')]")
-    SEARCH_BOX = (By.ID, "small-searchterms")
-    SEARCH_BUTTON = (By.XPATH, ".//button[contains(text(),'Search')]")
-    LOGIN_LINK = (By.XPATH, "//a[contains(text(),'Log in')]")
-    MY_ACCOUNT_LINK = (By.XPATH, "//a[@class='ico-account'][text()='My account']")
-    LOGOUT_LINK = (By.XPATH, "//a[contains(text(),'Log out')]")
+    # register_link_loc = (By.XPATH, "//a[contains(text(),'register')]")
+    # shopping_cart_link_loc = (By.XPATH, "//span[contains(text(),'shopping cart')]")
+    # search_box_loc = (By.ID, "small-searchterms")
+    # search_button_loc = (By.XPATH, ".//button[contains(text(),'search')]")
+    # login_link_loc = (By.XPATH, "//a[contains(text(),'log in')]")
+    # my_account_link_loc = (By.XPATH, "//a[@class='ico-account'][text()='my account']")
+    # logout_link_loc = (By.XPATH, "//a[contains(text(),'log out')]")
+
+    register_link_loc = (By.XPATH, "//a[contains(text(),'Register')]")
+    shopping_cart_link_loc = (By.XPATH, "//span[contains(text(),'Shopping cart')]")
+    search_box_loc = (By.ID, "small-searchterms")
+    search_button_loc = (By.XPATH, ".//button[contains(text(),'Search')]")
+    login_link_loc = (By.XPATH, "//a[contains(text(),'Log in')]")
+    my_account_link_loc = (By.XPATH, "//a[@class='ico-account'][text()='My account']")
+    logout_link_loc = (By.XPATH, "//a[contains(text(),'Log out')]")
 
     def open_register_page(self):
-        self.wait.until(EC.element_to_be_clickable(self.REGISTER_LINK)).click()
+        self.wait.until(EC.element_to_be_clickable(self.register_link_loc)).click()
         register_page = RegisterPage(self.driver, self.wait)
         return register_page
 
     def open_cart_page(self):
-        self.wait.until(EC.element_to_be_clickable(self.SHOPPING_CART_LINK)).click()
+        self.wait.until(EC.element_to_be_clickable(self.shopping_cart_link_loc)).click()
         cart_page = CartPage(self.driver, self.wait)
         return cart_page
 
     def search_bar(self, product_name):
-        box = self.wait.until(EC.element_to_be_clickable(self.SEARCH_BOX))
+        box = self.wait.until(EC.element_to_be_clickable(self.search_box_loc))
         box.clear()
         box.send_keys(product_name)
-        self.wait.until(EC.element_to_be_clickable(self.SEARCH_BUTTON)).click()
+        self.wait.until(EC.element_to_be_clickable(self.search_button_loc)).click()
         search_result_page = SearchResultPage(self.driver, self.wait)
         return search_result_page
 
     def open_login_page(self):
-        menu = self.wait.until(EC.visibility_of_element_located(self.LOGIN_LINK))
+        menu = self.wait.until(EC.visibility_of_element_located(self.login_link_loc))
         menu.click()
         login_page = LoginPage(self.driver, self.wait)
         return login_page
 
     def open_my_account_page(self):
-        self.wait.until(EC.element_to_be_clickable(self.MY_ACCOUNT_LINK)).click()
+        self.wait.until(EC.element_to_be_clickable(self.my_account_link_loc)).click()
         my_account_page = MyAccountPage(self.driver, self.wait)
         return my_account_page
 
     def click_log_out(self):
-        self.wait.until(EC.element_to_be_clickable(self.LOGOUT_LINK)).click()
+        self.wait.until(EC.element_to_be_clickable(self.logout_link_loc)).click()
