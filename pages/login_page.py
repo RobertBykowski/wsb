@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from pages.base_page import BasePage
 
 email_box_loc = (By.XPATH, "//input[@id='Email']")

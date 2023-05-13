@@ -2,7 +2,8 @@ import pytest
 
 # importing the HeaderMenu class from the pages.header_menu module
 from pages.header_menu import HeaderMenu
-from utilities.utils import Utils
+# loading test data from the test_data.json file
+from utilities.utils import get_test_data
 
 
 # Use the "browser_setup" fixture from the conftest.py file
@@ -22,12 +23,9 @@ class TestProductFinder:
         assert any(keyword.lower() in result.lower() for result in
                    search_results)
 
-    # loading test data from the test_data.json file
-    ul = Utils()
-
     # testing the search for a nonexistent product with the keywords from the test_data.json file
 
-    @pytest.mark.parametrize("keyword", [data["keyword"] for data in ul.get_test_data()])
+    @pytest.mark.parametrize("keyword", [data["keyword"] for data in get_test_data()])
     # @pytest.mark.parametrize("keyword", [data["keyword"] for data in test_data])
     def test_search_for_nonexistent_product(self, keyword):
         # searching for the product using the keyword in the search bar

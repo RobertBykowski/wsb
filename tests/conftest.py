@@ -5,13 +5,13 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 URL = "https://demo.nopcommerce.com"
 """
-@pytest.fixture(scope="class") to dekorator, który tworzy funkcję setup
-i definiuje jej zasięg class, co oznacza, że ta funkcja będzie wywoływana
-tylko raz dla każdej klasy testowej."""
+The @pytest.fixture(scope="class") is a decorator that creates a setup function 
+and defines its scope as "class," which means that this function will be called 
+only once for each test class."""
 
 
 @pytest.fixture(scope="class")
