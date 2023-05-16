@@ -1,0 +1,5 @@
+
+pytest .\test_cart_page.py --browser firefox --html=..\raport\report_test_cart.html
+pytest .\test_login.py --browser firefox --html=..\raport\report_test_login.html
+pytest .\test_product_finder.py --browser firefox --html=..\raport\report_test_product_finder.html
+pytest .\test_register_page.py --browser firefox --html=..\raport\report_test_register_page.html

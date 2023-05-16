@@ -1,3 +1,5 @@
+# header_menu.py
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -7,9 +9,6 @@ from pages.login_page import LoginPage
 from pages.my_account_page import MyAccountPage
 from pages.register_page import RegisterPage
 from pages.search_result_page import SearchResultPage
-
-# Importing necessary page classes
-
 
 # Locators
 register_link_loc = (By.XPATH, "//a[contains(text(),'Register')]")

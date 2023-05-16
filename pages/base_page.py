@@ -1,3 +1,5 @@
+# base_page.py
+
 import time
 
 from selenium.webdriver.common.by import By
@@ -76,7 +78,7 @@ class BasePage:
             cart_contents.append(product_data)
 
         return cart_contents
-        # print(products[0]['product'])
+
 
     def clean_cart(self):
         button_locator = (By.XPATH,

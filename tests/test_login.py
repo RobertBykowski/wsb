@@ -1,3 +1,5 @@
+# test_login.py
+
 import pytest
 
 from pages.header_menu import HeaderMenu
@@ -12,7 +14,7 @@ class TestLogIn:
         # Open the login page by clicking on the login link in the header menu
         login_page = header_menu.open_login_page()
         # Enter the email and password
-        login_page.write_email("tomasznowak@wp.pl")
+        login_page.write_email("tomasznowak20@wp.pl")
         login_page.write_password("tomasznowak")
         # Click the login button
         login_page.click_login_button()

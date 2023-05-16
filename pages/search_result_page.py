@@ -1,12 +1,15 @@
+# search_result_page.py
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import BasePage
 from pages.product_page import ProductPage
+
 # Locators
 text_loc = (By.XPATH, "//div[contains(text(),'No products were found that matched your criteria.')]")
 product_links_loc = (
-        By.XPATH, "//div[@class='products-container']//div[@class='product-item']//h2[@class='product-title']/a")
+    By.XPATH, "//div[@class='products-container']//div[@class='product-item']//h2[@class='product-title']/a")
 
 
 class SearchResultPage(BasePage):

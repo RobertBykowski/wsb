@@ -1,3 +1,5 @@
+# test_register_page.py
+
 import pytest
 
 from pages.header_menu import HeaderMenu
@@ -12,7 +14,7 @@ class TestRegisterPage:
         header_menu = HeaderMenu(self.driver, self.wait)
         register_page = header_menu.open_register_page()
         # Enter valid registration details
-        register_page.enter_register_details("Adam", "Nowak", "adamnowak2@wp.pl", "adamnowak")
+        register_page.enter_register_details("Adam", "Nowak", "adamnowak1@wp.pl", "adamnowak")
         register_page.click_register_button()
         # Check if success message is displayed
         assert register_page.get_success_message() == "Your registration completed"
@@ -22,7 +24,7 @@ class TestRegisterPage:
         header_menu = HeaderMenu(self.driver, self.wait)
         register_page = header_menu.open_register_page()
         # Enter registration details with already existing email
-        register_page.enter_register_details("Tomasz", "Nowak", "adamnowak@wp.pl", "adamnowak")
+        register_page.enter_register_details("Tomasz", "Nowak", "adamnowak1@wp.pl", "adamnowak")
         register_page.click_register_button()
         # Check if warning message is displayed
         assert register_page.get_warning_message() == "The specified email already exists"

@@ -1,7 +1,10 @@
+# login_page.py
+
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 
+# Locators
 email_box_loc = (By.XPATH, "//input[@id='Email']")
 password_box_loc = (By.XPATH, "//input[@id='Password']")
 log_in_button_loc = (By.XPATH, "//button[contains(text(),'Log in')]")
@@ -23,5 +26,3 @@ class LoginPage(BasePage):
 
     def display_warning_text(self):
         return self.get_text(warning_text_loc)
-
-
